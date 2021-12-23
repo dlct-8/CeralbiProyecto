@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="73dd4fbb-87ef-4cf8-82c7-116b9917aad6">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<subDataset name="PieChartDataset" uuid="89036702-ea71-46b5-a245-1c877f3f3d49"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     factura.`Emision` AS factura_Emision,
+     factura.`Vencimiento` AS factura_Vencimiento,
+     factura.`impuestos` AS factura_impuestos,
+     cliente.`nombres` AS cliente_nombres,
+     vendedor.`nombresVen` AS vendedor_nombresVen,
+     pedido.`subtotal` AS pedido_subtotal,
+     pedido.`descuento` AS pedido_descuento,
+     pedido.`total` AS pedido_total,
+     cliente.`apellidos` AS cliente_apellidos,
+     vendedor.`ApellidosVen` AS vendedor_ApellidosVen,
+     factura.`idfac` AS factura_idfac
+FROM
+     `cliente` cliente INNER JOIN `factura` factura ON cliente.`idCli` = factura.`idCli`
+     INNER JOIN `vendedor` vendedor ON factura.`idVen` = vendedor.`idVen`
+     INNER JOIN `pedido` pedido ON factura.`idPed` = pedido.`idPed`]]>
+	</queryString>
+	<field name="factura_Emision" class="java.sql.Timestamp"/>
+	<field name="factura_Vencimiento" class="java.sql.Timestamp"/>
+	<field name="factura_impuestos" class="java.lang.Float"/>
+	<field name="cliente_nombres" class="java.lang.String"/>
+	<field name="vendedor_nombresVen" class="java.lang.String"/>
+	<field name="pedido_subtotal" class="java.lang.Float"/>
+	<field name="pedido_descuento" class="java.lang.Float"/>
+	<field name="pedido_total" class="java.lang.Float"/>
+	<field name="cliente_apellidos" class="java.lang.String"/>
+	<field name="vendedor_ApellidosVen" class="java.lang.String"/>
+	<field name="factura_idfac" class="java.lang.Integer"/>
+	<background>
+		<band height="555" splitType="Stretch">
+			<pie3DChart>
+				<chart isShowLegend="false" evaluationTime="Report">
+					<reportElement x="-18" y="406" width="229" height="139" uuid="8b0e215d-2245-44a4-bc93-e108d364975f"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<pieDataset>
+					<dataset>
+						<datasetRun subDataset="PieChartDataset" uuid="4a1b05b1-e107-4662-add3-2c61f559ad8d">
+							<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource(5)]]></dataSourceExpression>
+						</datasetRun>
+					</dataset>
+					<keyExpression><![CDATA[/* Replace with your key expression here */
+$V{REPORT_COUNT}]]></keyExpression>
+					<valueExpression><![CDATA[new Double(200*Math.random()*5)]]></valueExpression>
+				</pieDataset>
+				<pie3DPlot>
+					<plot backgroundAlpha="0.5" foregroundAlpha="0.8">
+						<seriesColor seriesOrder="0" color="#3399FF"/>
+						<seriesColor seriesOrder="1" color="#00CCFF"/>
+						<seriesColor seriesOrder="2" color="#0066CC"/>
+						<seriesColor seriesOrder="3" color="#6699FF"/>
+						<seriesColor seriesOrder="4" color="#004A94"/>
+						<seriesColor seriesOrder="5" color="#00356A"/>
+					</plot>
+					<itemLabel color="#000000" backgroundColor="#FFFFFF"/>
+				</pie3DPlot>
+			</pie3DChart>
+			<image>
+				<reportElement x="-20" y="65" width="229" height="250" uuid="6ac51e4d-304e-4215-bf00-d4f9a382b717">
+					<printWhenExpression><![CDATA[$V{PAGE_NUMBER} == 1]]></printWhenExpression>
+				</reportElement>
+				<imageExpression><![CDATA["flower1.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="-20" y="-20" width="229" height="250" uuid="84d6bc9f-2d5f-42e7-b02e-dcf0e3d1651e">
+					<printWhenExpression><![CDATA[$V{PAGE_NUMBER} > 1]]></printWhenExpression>
+				</reportElement>
+				<imageExpression><![CDATA["flower1.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement mode="Opaque" x="318" y="315" width="239" height="181" backcolor="#FFFFCC" uuid="ae87132c-d58b-4951-985b-98def80c462c">
+					<printWhenExpression><![CDATA[Boolean.FALSE]]></printWhenExpression>
+				</reportElement>
+				<box topPadding="4" leftPadding="4" bottomPadding="4" rightPadding="4">
+					<pen lineWidth="1.0" lineColor="#CC9900"/>
+					<topPen lineWidth="1.0" lineColor="#CC9900"/>
+					<leftPen lineWidth="1.0" lineColor="#CC9900"/>
+					<bottomPen lineWidth="1.0" lineColor="#CC9900"/>
+					<rightPen lineWidth="1.0" lineColor="#CC9900"/>
+				</box>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Each chart is populated on each page.
+The 3 pie charts are currently using an empty datasource and the values are
+generated using a random generator.
+
+This rectangle element is not printed (see the print when expression of this
+element)]]></text>
+			</staticText>
+			<line>
+				<reportElement x="201" y="431" width="117" height="1" uuid="fd2fbe0d-6da7-4469-83fa-523b700e139b">
+					<printWhenExpression><![CDATA[Boolean.FALSE]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="3.0" lineStyle="Dotted" lineColor="#996600"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="275" y="-10" width="240" height="181" backcolor="#FFFFCC" uuid="5dfa7bc3-f6e8-470c-98b0-c2a81178d688">
+					<printWhenExpression><![CDATA[Boolean.FALSE]]></printWhenExpression>
+				</reportElement>
+				<box topPadding="4" leftPadding="4" bottomPadding="4" rightPadding="4">
+					<pen lineWidth="1.0" lineColor="#CC9900"/>
+					<topPen lineWidth="1.0" lineColor="#CC9900"/>
+					<leftPen lineWidth="1.0" lineColor="#CC9900"/>
+					<bottomPen lineWidth="1.0" lineColor="#CC9900"/>
+					<rightPen lineWidth="1.0" lineColor="#CC9900"/>
+				</box>
+				<textElement markup="none">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Flowers
+
+There are two flowers, the first one is printed only starting from the second page, the other one only in the first page.]]></text>
+			</staticText>
+			<line>
+				<reportElement x="72" y="37" width="204" height="1" uuid="1dca5507-672c-4bc2-b692-5ddaf497047d">
+					<printWhenExpression><![CDATA[Boolean.FALSE]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="3.0" lineStyle="Dotted" lineColor="#996600"/>
+				</graphicElement>
+			</line>
+		</band>
+	</background>
+	<title>
+		<band height="94" splitType="Stretch">
+			<staticText>
+				<reportElement style="SubTitle" x="336" y="65" width="449" height="29" uuid="3de61736-72f5-44bf-9464-00f3c7128dfa"/>
+				<textElement textAlignment="Right">
+					<font size="22" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Ceralbi]]></text>
+			</staticText>
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="0" width="822" height="65" forecolor="#006699" backcolor="#006699" uuid="e6475423-1fb8-4678-a9fe-254287365ed3"/>
+				<staticText>
+					<reportElement style="Title" x="231" y="0" width="578" height="65" uuid="ced75d35-a57f-4256-9b7a-8d96e494c798"/>
+					<textElement textAlignment="Right">
+						<font fontName="Arial" size="54" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Ventas]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="40" splitType="Stretch">
+			<frame>
+				<reportElement x="227" y="0" width="575" height="14" uuid="c5f0fd67-4848-4dd9-a5d6-af15b9149e6b"/>
+				<staticText>
+					<reportElement style="Column header" positionType="Float" x="0" y="0" width="52" height="14" forecolor="#000000" uuid="b38de892-bfa9-4fdb-8d4c-551e802b0a48"/>
+					<textElement>
+						<font fontName="Arial" size="12" isBold="true" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[FACTURAN°]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" positionType="Float" x="52" y="0" width="52" height="14" forecolor="#000000" uuid="0743cbe6-68dc-4308-81c7-79381fc3fe8c"/>
+					<textElement>
+						<font fontName="Arial" size="12" isBold="true" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[Vencimiento]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" positionType="Float" x="104" y="0" width="52" height="14" forecolor="#000000" uuid="cc3d0714-4fa0-437a-8f2e-a159042883df"/>
+					<textElement>
+						<font fontName="Arial" size="12" isBold="true" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[impuestos]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" positionType="Float" x="156" y="0" width="52" height="14" forecolor="#000000" uuid="8d7446f0-d40f-4321-894d-ae0941e84da4"/>
+					<textElement>
+						<font fontName="Arial" size="12" isBold="true" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[nombres]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" positionType="Float" x="208" y="0" width="52" height="14" forecolor="#000000" uuid="c24e90e2-7e0d-4382-92dd-625368cca89b"/>
+					<textElement>
+						<font fontName="Arial" size="12" isBold="true" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[vendedor_nombresVen]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" positionType="Float" x="260" y="0" width="52" height="14" forecolor="#000000" uuid="6d20d995-8ec9-4a75-9baf-c1eb0d76bed3"/>
+					<textElement>
+						<font fontName="Arial" size="12" isBold="true" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[pedido_subtotal]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" positionType="Float" x="312" y="0" width="52" height="14" forecolor="#000000" uuid="aad7b057-9bb9-4bd5-bd7b-3c05d2e1aaf4"/>
+					<textElement>
+						<font fontName="Arial" size="12" isBold="true" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[pedido_descuento]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" positionType="Float" x="364" y="0" width="52" height="14" forecolor="#000000" uuid="66c08522-0440-4a09-955c-7d7b8f8f36cb"/>
+					<textElement>
+						<font fontName="Arial" size="12" isBold="true" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[pedido_total]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" positionType="Float" x="416" y="0" width="52" height="14" forecolor="#000000" uuid="7a5eb8ac-9675-4386-a91e-79450cb871d7"/>
+					<textElement>
+						<font fontName="Arial" size="12" isBold="true" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[cliente_apellidos]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" positionType="Float" x="468" y="0" width="52" height="14" forecolor="#000000" uuid="e14f9031-7f19-4628-95e0-bdecca35dd61"/>
+					<textElement>
+						<font fontName="Arial" size="12" isBold="true" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[vendedor_ApellidosVen]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" positionType="Float" x="520" y="0" width="52" height="14" forecolor="#000000" uuid="b39c2826-8a28-44c2-8a37-449d7afffab6"/>
+					<textElement>
+						<font fontName="Arial" size="12" isBold="true" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[factura_idfac]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="51" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="227" y="14" width="575" height="1" uuid="ce35f88a-4f59-4087-b9ae-370d9f578e58"/>
+			</line>
+			<frame>
+				<reportElement x="227" y="0" width="575" height="14" uuid="1987a8e0-ce5f-4e4d-8af9-7571324492cf"/>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="Detail" positionType="Float" x="0" y="0" width="52" height="14" uuid="5ba27689-b835-4973-b0c2-fd78c29c8c8d"/>
+					<textElement>
+						<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{factura_Emision}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="Detail" positionType="Float" x="52" y="0" width="52" height="14" uuid="63fd4dd4-86de-4061-9eaa-2be4f1400f0f"/>
+					<textElement>
+						<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{factura_Vencimiento}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="Detail" positionType="Float" x="104" y="0" width="52" height="14" uuid="00e6a350-a9c7-499d-b200-187e176c0d6e"/>
+					<textElement>
+						<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{factura_impuestos}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="Detail" positionType="Float" x="156" y="0" width="52" height="14" uuid="0c133477-d6ee-4597-883b-2d958dc32ad7"/>
+					<textElement>
+						<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{cliente_nombres}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="Detail" positionType="Float" x="208" y="0" width="52" height="14" uuid="0b06e9db-93b5-417a-8920-bba5d79f3074"/>
+					<textElement>
+						<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{vendedor_nombresVen}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="Detail" positionType="Float" x="260" y="0" width="52" height="14" uuid="761bd00b-7626-4e58-ab41-11b0d7f55cba"/>
+					<textElement>
+						<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{pedido_subtotal}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="Detail" positionType="Float" x="312" y="0" width="52" height="14" uuid="8a052f40-0d2d-4314-b430-85941b37638c"/>
+					<textElement>
+						<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{pedido_descuento}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="Detail" positionType="Float" x="364" y="0" width="52" height="14" uuid="16c862d8-b204-49eb-aeba-8620b354f7ed"/>
+					<textElement>
+						<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{pedido_total}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="Detail" positionType="Float" x="416" y="0" width="52" height="14" uuid="466b9069-90e1-4fa9-aa9d-7729eda9ba9e"/>
+					<textElement>
+						<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{cliente_apellidos}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="Detail" positionType="Float" x="468" y="0" width="52" height="14" uuid="029b62d0-429c-428a-a931-bd5cedeebbe9"/>
+					<textElement>
+						<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{vendedor_ApellidosVen}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="Detail" positionType="Float" x="520" y="0" width="52" height="14" uuid="84ca9fc1-4eae-41f7-a454-31392461dc9a"/>
+					<textElement>
+						<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{factura_idfac}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="7" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="274f7536-4970-4092-84fa-6793e00653ca"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="16" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="2" y="0" width="800" height="16" forecolor="#D0B48E" backcolor="#006699" uuid="8c4e1ad2-f17a-4f78-8606-8e635f66b8b3"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="753" y="0" width="40" height="16" forecolor="#FFFFFF" uuid="80e92566-9e21-4a4d-8225-68de066cc235"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="673" y="0" width="80" height="16" forecolor="#FFFFFF" uuid="3820d652-c940-4122-961f-1c76015922a7"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="2" y="0" width="197" height="16" forecolor="#FFFFFF" uuid="d6d0547f-f99b-435b-bb7e-f73c15190a89"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

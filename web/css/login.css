@@ -1,0 +1,76 @@
+/*otro*/
+html,body {
+	height: 100%;
+}
+body {
+	height: 100%;
+	font-family: 'Open Sans', sans-serif;
+	-webkit-font-smoothing: antialiased;
+	font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 0;
+	font-weight: 500;
+	color: #001B2E;
+}
+.global-container{
+	height:100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #EFEFEF;
+}
+
+form{
+	padding-top: 2px;
+	font-size: 14px;
+}
+
+.form-group {
+	width: 100%;
+}
+
+.card-title {
+	font-weight:300;
+}
+
+.btn{
+	font-size: 14px;
+	margin-top:20px;
+}
+
+.login-form{
+	width:30%;
+	margin:20px;
+	min-width:300px;
+
+}
+
+.sign-up{
+	text-align:center;
+	padding:0;
+}
+
+.alert{
+	margin-bottom:-30px;
+	font-size: 13px;
+	margin-top:20px;
+}
+.subbt:hover {
+  background-color: #05477A;
+}
+p.centrado {
+  text-align: center;
+}
+
+.logo-is {
+	width: 100%;
+	min-width: 250px;
+	padding: 20px;
+}

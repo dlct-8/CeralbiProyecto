@@ -1,0 +1,1279 @@
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+	<title>Ceralbi - Administrador</title>
+	<meta charset="UTF-8">
+	<meta name="description" content="Ceralbi - La tienda en línea">
+	<meta name="keywords" content="ceralbi, Encajas, eCommerce, cuadros, html">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Icon -->
+	<link href="../Imgs/LogoAzul.ico" rel="shortcut icon"/>
+
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,500,500i,600,600i,700,700i"
+	rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,600,600i,700,700i"
+	rel="stylesheet">
+
+	<!-- Stylesheets -->
+	<link rel="stylesheet" href="../css/sidenav.css"/>
+	<link rel="stylesheet" href="../css/common.css"/>
+	<link rel="stylesheet" href="../css/main.css"/>
+	<link rel="stylesheet" href="../css/admin.css"/>
+	<link rel="stylesheet" href="../css/bootstrap.min.css"/>
+
+
+	<script src="https://kit.fontawesome.com/cfe8b23fc4.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+	<!-- Page Preloder -->
+	<div id="preloder">
+		<div class="loader"></div>
+	</div>
+
+	<!-- Vertical Tabs -->
+
+<div class="tab">
+	<img src="../Imgs/LogoAzulW.png" alt="Logo Ceralbi">
+	<div class="admin">
+		Administrador
+		<br><a href="/../Ceralbi4A/Home.jsp" style="font-size:13px;color:#EFEFEF;text-decoration:none;">
+			Salir de la Cuenta</a>
+	</div>
+ 	<button class="tablinks active" onclick="openTab(event, 'dashboard')"><i class="fas fa-tachometer-alt"></i>
+		Dashboard</button>
+ 	<!--<button class="tablinks" onclick="openTab(event, 'add')"><i class="fas fa-plus-circle"></i>
+		Productos</button>-->
+ 	<button class="tablinks" onclick="openTab(event, 'edit')"><i class="fas fa-edit"></i>
+		Ventas</button>
+		<button class="tablinks" onclick="openTab(event, 'customers')"><i class="fas fa-address-book"></i>
+		Gestión de Clientes</button>	
+	<button class="tablinks" onclick="openTab(event, 'inventory')"><i class="fas fa-boxes"></i>
+	Inventario</button>
+	<!--<button class="tablinks" onclick="openTab(event, 'sales')"><i class="fas fa-chart-line"></i>
+		Tendencias de Ventas</button>-->
+	<button class="tablinks" onclick="openTab(event, 'reports')"><i class="fas fa-file-contract"></i>
+		Reportes</button>
+	<button class="tablinks" onclick="openTab(event, 'contact')"><i class="fas fa-comment-dots"></i>
+		Contacto</button>
+       <button class="tablinks" onclick="openTab(event, 'bill')"><i class="fas fa-file-invoice-dollar"></i>
+		Mantenimiento</button>
+	<!-- Copyright -->
+	<footer class="footer-section">
+		<div class="container">
+			<p class="copyright">
+				Copyright &copy;<script>document.write(new Date().getFullYear());</script> Todos los derechos reservados | Diseñado por
+				<img src="../Imgs/LogoCR.png" alt="Logo Ceralbi" class="copyright">
+	  </div>
+	</footer>
+</div>
+
+<div>
+	<div id="dashboard" class="tabcontent">
+	 <h3>Dashboard</h3>
+	        <div class="container">
+	            <div class="row">
+	                <div class="col">
+	                    <p class="text-white mt-5 mb-5">Bienvenido, <b>Admin</b></p>
+	                </div>
+	            </div>
+	            <!-- row -->
+	            <div class="row tm-content-row">
+	                <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
+	                    <div class="tm-bg-primary-dark tm-block"><div style="position: absolute; inset: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;" class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
+	                        <h2 class="tm-block-title">Latest Hits</h2>
+													<img src="../Imgs\Gafica ventas.png" alt="Gráfica ventas">
+	                        <canvas id="lineChart" style="display: block; width: 465px; height: 232px;" class="chartjs-render-monitor" width="465" height="232"></canvas>
+	                    </div>
+	                </div>
+	                <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
+	                    <div class="tm-bg-primary-dark tm-block"><div style="position: absolute; inset: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;" class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
+	                        <h2 class="tm-block-title">Performance</h2>
+													<img src="../Imgs\Porcentaje de ventas.png" alt="Porcentaje ventas">
+	                        <canvas id="barChart" style="display: block; width: 465px; height: 232px;" class="chartjs-render-monitor" width="465" height="232"></canvas>
+	                    </div>
+	                </div>
+	                <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
+	                    <div class="tm-bg-primary-dark tm-block tm-block-taller">
+	                        <h2 class="tm-block-title">Storage Information</h2>
+													<img src="../Imgs\Ganancias.png" alt="Ganancias">
+	                        <div id="pieChartContainer" style="height: 300px;"><div style="position: absolute; inset: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;" class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
+	                            <canvas id="pieChart" class="chartjs-render-monitor" style="display: block; width: 465px; height: 300px;" width="465" height="300"></canvas>
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
+	                    <div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-overflow">
+	                        <h2 class="tm-block-title">Notification List</h2>
+	                        <div class="tm-notification-items">
+	                            <div class="media tm-notification-item">
+	                                <div class="tm-gray-circle"><img src="../Imgs\Notificación.jpg" alt="Avatar Image" class="rounded-circle"></div>
+	                                <div class="media-body">
+	                                    <p class="mb-2"><b>Jessica</b> and <b>6 others</b> sent you new <a href="#" class="tm-notification-link">product updates</a>. Check new orders.</p>
+	                                    <span class="tm-small tm-text-color-secondary">6h ago.</span>
+	                                </div>
+	                            </div>
+	                            <div class="media tm-notification-item">
+	                                <div class="tm-gray-circle"><img src="../Imgs\Notificación.jpg" alt="Avatar Image" class="rounded-circle"></div>
+	                                <div class="media-body">
+	                                    <p class="mb-2"><b>Oliver Too</b> and <b>6 others</b> sent you existing <a href="#" class="tm-notification-link">product updates</a>. Read more reports.</p>
+	                                    <span class="tm-small tm-text-color-secondary">6h ago.</span>
+	                                </div>
+	                            </div>
+	                            <div class="media tm-notification-item">
+	                                <div class="tm-gray-circle"><img src="../Imgs\Notificación.jpg" alt="Avatar Image" class="rounded-circle"></div>
+	                                <div class="media-body">
+	                                    <p class="mb-2"><b>Victoria</b> and <b>6 others</b> sent you <a href="#" class="tm-notification-link">order updates</a>. Read order information.</p>
+	                                    <span class="tm-small tm-text-color-secondary">6h ago.</span>
+	                                </div>
+	                            </div>
+	                            <div class="media tm-notification-item">
+	                                <div class="tm-gray-circle"><img src="../Imgs\Notificación.jpg" alt="Avatar Image" class="rounded-circle"></div>
+	                                <div class="media-body">
+	                                    <p class="mb-2"><b>Laura Cute</b> and <b>6 others</b> sent you <a href="#" class="tm-notification-link">product records</a>.</p>
+	                                    <span class="tm-small tm-text-color-secondary">6h ago.</span>
+	                                </div>
+	                            </div>
+	                            <div class="media tm-notification-item">
+	                                <div class="tm-gray-circle"><img src="../Imgs\Notificación.jpg" alt="Avatar Image" class="rounded-circle"></div>
+	                                <div class="media-body">
+	                                    <p class="mb-2"><b>Samantha</b> and <b>6 others</b> sent you <a href="#" class="tm-notification-link">order stuffs</a>.</p>
+	                                    <span class="tm-small tm-text-color-secondary">6h ago.</span>
+	                                </div>
+	                            </div>
+	                            <div class="media tm-notification-item">
+	                                <div class="tm-gray-circle"><img src="../Imgs\Notificación.jpg" alt="Avatar Image" class="rounded-circle"></div>
+	                                <div class="media-body">
+	                                    <p class="mb-2"><b>Sophie</b> and <b>6 others</b> sent you <a href="#" class="tm-notification-link">product updates</a>.</p>
+	                                    <span class="tm-small tm-text-color-secondary">6h ago.</span>
+	                                </div>
+	                            </div>
+	                            <div class="media tm-notification-item">
+	                                <div class="tm-gray-circle"><img src="../Imgs\Notificación.jpg" alt="Avatar Image" class="rounded-circle"></div>
+	                                <div class="media-body">
+	                                    <p class="mb-2"><b>Lily A</b> and <b>6 others</b> sent you <a href="#" class="tm-notification-link">product updates</a>.</p>
+	                                    <span class="tm-small tm-text-color-secondary">6h ago.</span>
+	                                </div>
+	                            </div>
+	                            <div class="media tm-notification-item">
+	                                <div class="tm-gray-circle"><img src="../Imgs\Notificación.jpg" alt="Avatar Image" class="rounded-circle"></div>
+	                                <div class="media-body">
+	                                    <p class="mb-2"><b>Amara</b> and <b>6 others</b> sent you <a href="#" class="tm-notification-link">product updates</a>.</p>
+	                                    <span class="tm-small tm-text-color-secondary">6h ago.</span>
+	                                </div>
+	                            </div>
+	                            <div class="media tm-notification-item">
+	                                <div class="tm-gray-circle"><img src="../Imgs\Notificación.jpg" alt="Avatar Image" class="rounded-circle"></div>
+	                                <div class="media-body">
+	                                    <p class="mb-2"><b>Cinthela</b> and <b>6 others</b> sent you <a href="#" class="tm-notification-link">product updates</a>.</p>
+	                                    <span class="tm-small tm-text-color-secondary">6h ago.</span>
+	                                </div>
+	                            </div>
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="col-12 tm-block-col">
+	                    <div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-scroll">
+	                        <h2 class="tm-block-title">Pedidos</h2>
+	                        <table class="table">
+	                            <thead>
+	                                <tr>
+	                                    <th scope="col">N° ORDEN</th>
+	                                    <th scope="col">ESTADO</th>
+	                                    <th scope="col">CLIENTE</th>
+	                                    <th scope="col">DIRECCIÓN</th>
+	                                    <th scope="col">DISTANCIA</th>
+	                                    <th scope="col">FECHA INICIO</th>
+	                                    <th scope="col">ENTREGA ESTIMADA/th>
+	                                </tr>
+	                            </thead>
+	                            <tbody>
+	                                <tr>
+	                                    <th scope="row"><b>#EFEFEF</b></th>
+	                                    <td>
+	                                        <div class="tm-status-circle moving">
+	                                        </div>En proceso
+	                                    <td><b>Oliver Trag</b></td>
+	                                    <td><b>Usme, Bogotá</b></td>
+	                                    <td><b>10 km</b></td>
+	                                    <td>16:00, 12 NOV 2018</td>
+	                                    <td>08:00, 18 NOV 2018</td>
+	                                </tr>
+	                                <tr>
+	                                    <th scope="row"><b>#122348</b></th>
+	                                    <td>
+	                                        <div class="tm-status-circle pending">
+	                                        </div>Pendiente
+	                                    </td>
+	                                    <td><b>Jacob Miller</b></td>
+	                                    <td><b>Bosa, Bogotá</b></td>
+	                                    <td><b>7 km</b></td>
+	                                    <td>11:00, 10 NOV 2018</td>
+	                                    <td>04:00, 14 NOV 2018</td>
+	                                </tr>
+	                                <tr>
+	                                    <th scope="row"><b>#122347</b></th>
+	                                    <td>
+	                                        <div class="tm-status-circle cancelled">
+	                                        </div>Cancelado
+	                                    </td>
+	                                    <td><b>George Wilson</b></td>
+	                                    <td><b>Suba, Bogotá</b></td>
+	                                    <td><b>2 km</b></td>
+	                                    <td>12:00, 22 NOV 2018</td>
+	                                    <td>06:00, 28 NOV 2018</td>
+	                                </tr>
+	                                <tr>
+	                                    <th scope="row"><b>#122346</b></th>
+	                                    <td>
+	                                        <div class="tm-status-circle moving">
+	                                        </div>En proceso
+	                                    </td>
+	                                    <td><b>William Aung</b></td>
+	                                    <td><b>Engativá, Bogotá</b></td>
+	                                    <td><b>3 km</b></td>
+	                                    <td>15:00, 10 NOV 2018</td>
+	                                    <td>09:00, 14 NOV 2018</td>
+	                                </tr>
+	                                <tr>
+	                                    <th scope="row"><b>#122345</b></th>
+	                                    <td>
+	                                        <div class="tm-status-circle pending">
+	                                        </div>Pendiente
+	                                    </td>
+	                                    <td><b>Harry Ryan</b></td>
+	                                    <td><b>Usme</b></td>
+	                                    <td><b>9 km</b></td>
+	                                    <td>15:00, 11 NOV 2018</td>
+	                                    <td>09:00, 17 NOV 2018</td>
+	                                </tr>
+	                                <tr>
+	                                    <th scope="row"><b>#122344</b></th>
+	                                    <td>
+	                                        <div class="tm-status-circle pending">
+	                                        </div>Pendiente
+	                                    </td>
+	                                    <td><b>Michael Jones</b></td>
+	                                    <td><b>Usaquen, Bogotá</b></td>
+	                                    <td><b>4km</b></td>
+	                                    <td>18:00, 12 OCT 2018</td>
+	                                    <td>06:00, 18 OCT 2018</td>
+	                                </tr>
+	                                <tr>
+	                                    <th scope="row"><b>#122343</b></th>
+	                                    <td>
+	                                        <div class="tm-status-circle moving">
+	                                        </div>En proceso
+	                                    </td>
+	                                    <td><b>Timmy Davis</b></td>
+	                                    <td><b>Bosa</b></td>
+	                                    <td><b>8 km</b></td>
+	                                    <td>12:00, 10 OCT 2018</td>
+	                                    <td>08:00, 18 OCT 2018</td>
+	                                </tr>
+	                                <tr>
+	                                    <th scope="row"><b>#122342</b></th>
+	                                    <td>
+	                                        <div class="tm-status-circle moving">
+	                                        </div>En proceso
+	                                    </td>
+	                                    <td><b>Oscar Phyo</b></td>
+	                                    <td><b>Suba, Bogotá</b></td>
+	                                    <td><b>1 km</b></td>
+	                                    <td>15:30, 06 OCT 2018</td>
+	                                    <td>09:30, 16 OCT 2018</td>
+	                                </tr>
+	                                <tr>
+	                                    <th scope="row"><b>#122341</b></th>
+	                                    <td>
+	                                        <div class="tm-status-circle moving">
+	                                        </div>En proceso
+	                                    </td>
+	                                    <td><b>Charlie Brown</b></td>
+	                                    <td><b>Engativá</b></td>
+	                                    <td><b>3 km</b></td>
+	                                    <td>11:00, 10 OCT 2018</td>
+	                                    <td>03:00, 14 OCT 2018</td>
+	                                </tr>
+	                                <tr>
+	                                    <th scope="row"><b>#122340</b></th>
+	                                    <td>
+	                                        <div class="tm-status-circle cancelled">
+	                                        </div>Cancelado
+	                                    </td>
+	                                    <td><b>Wilson Cookies</b></td>
+	                                    <td><b>Barrios Unidos, Bogotá</b></td>
+	                                    <td><b>5 km</b></td>
+	                                    <td>17:30, 12 OCT 2018</td>
+	                                    <td>08:30, 22 OCT 2018</td>
+	                                </tr>
+	                                <tr>
+	                                    <th scope="row"><b>#122339</b></th>
+	                                    <td>
+	                                        <div class="tm-status-circle moving">
+	                                        </div>En proceso
+	                                    </td>
+	                                    <td><b>Richard Clamon</b></td>
+	                                    <td><b>Usme, Bogotá</b></td>
+	                                    <td><b>150 km</b></td>
+	                                    <td>15:00, 12 OCT 2018</td>
+	                                    <td>09:20, 26 OCT 2018</td>
+	                                </tr>
+	                            </tbody>
+	                        </table>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	        <footer class="tm-footer row tm-mt-small">
+	            <div class="col-12 font-weight-light">
+	                <p class="text-center text-white mb-0 px-4 small">
+	                    Copyright © <b>2018</b> All rights reserved.
+
+	                    Design: <a rel="nofollow noopener" href="https://templatemo.com" class="tm-footer-link">Template Mo</a>
+	                </p>
+	            </div>
+	        </footer>
+	    </div>
+
+	    <script src="js/jquery-3.3.1.min.js"></script>
+	    <!-- https://jquery.com/download/ -->
+	    <script src="js/moment.min.js"></script>
+	    <!-- https://momentjs.com/ -->
+	    <script src="js/Chart.min.js"></script>
+	    <!-- http://www.chartjs.org/docs/latest/ -->
+	    <script src="js/bootstrap.min.js"></script>
+	    <!-- https://getbootstrap.com/ -->
+	    <script src="js/tooplate-scripts.js"></script>
+	    <script>
+	        Chart.defaults.global.defaultFontColor = 'white';
+	        let ctxLine,
+	            ctxBar,
+	            ctxPie,
+	            optionsLine,
+	            optionsBar,
+	            optionsPie,
+	            configLine,
+	            configBar,
+	            configPie,
+	            lineChart;
+	        barChart, pieChart;
+	        // DOM is ready
+	        $(function () {
+	            drawLineChart(); // Line Chart
+	            drawBarChart(); // Bar Chart
+	            drawPieChart(); // Pie Chart
+
+	            $(window).resize(function () {
+	                updateLineChart();
+	                updateBarChart();
+	            });
+	        })
+	    </script>
+	</div>
+
+	<div id="add" class="tabcontent">
+		<div>
+			<br><h2>Inventario</h2>
+		</div>
+		<div class="row tm-edit-product-row">
+			<div class="col-xl-6 col-lg-6 col-md-12">
+				<form action="" class="needs-validation" novalidate>
+					<div class="form-group mb-3">
+						<label for="validationCostum01" class="form-label">Nombre</label>
+						<input type="text" class="form-control"id="validationCostum01"required>
+						<div class="invalid-feedback">
+						El nombre del producto es obligatorio.
+					</div>
+					</div>
+					<div class="form-group mb-3">
+						<label for="validationCostum01" class="form-label">Descripción</label>
+						<textarea class="form-control validate" id="validationCostum01"rows="3" required></textarea>
+						<div class="invalid-feedback">
+						Descripción del producto.
+					</div>
+					</div>
+					<div class="form-group mb-3">
+						<label for="validationCostum01" class="form-label">Categoría</label>
+						<select class="custom-select tm-select-accounts" id="category">
+							<a href=""><i class="fas fa-angle-down"></i></a>
+							<option selected="">Seleccionar Categoría</option>
+							<option value="1">Nuevo</option>
+							<option value="2">Popular</option>
+							<option value="3">Tendencia</option>
+						</select>
+					</div>
+					<div class="row">
+					<!--	<div class="form-group mb-3 col-xs-12 col-sm-6">
+							<label for="expire_date">Expiración
+							</label>
+							<input id="expire_date" name="expire_date" type="text" class="form-control validate hasDatepicker" data-large-mode="true">
+						</div>-->
+						<div class="form-group mb-3 col-xs-12 col-sm-6">
+							<label for="stock">Unidades en Inventario
+							</label>
+							<input  type="text" class="form-control validate" id="validationCostum01" required>
+							<div class="invalid-feedback">
+							Descripción del producto.
+						</div>
+						</div>
+					</div>
+
+			</div>
+
+			<div class="col-xl-6 col-lg-6 col-md-12 mx-auto mb-4">
+				<div class="tm-product-img-dummy mx-auto">
+					<i class="fas fa-cloud-upload-alt tm-upload-icon" onclick="document.getElementById('fileInput').click();"></i>
+				</div>
+				<div class="custom-file mt-3 mb-3">
+					<input id="fileInput" type="file" style="display:none;">
+
+					<input type="button"  class="site-btn btn-block mx-auto" value="Foto del Producto" onclick="document.getElementById('fileInput').click();">
+				</div>
+			</div>
+			<div class="col-12">
+				<div  id="liveAlertPlaceholder"></div>
+				<button type="submit" class="site-btn btn-block text-uppercase" id="liveAlertBtn">Agregar el Producto</button>
+			</div>
+</form>
+		</div>
+	</div>
+	<!--Script de validación-->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+	<script type="text/jscript">
+	// Example starter JavaScript for disabling form submissions if there are invalid fields
+	(function () {
+		'use strict'
+
+		// Fetch all the forms we want to apply custom Bootstrap validation styles to
+		var forms = document.querySelectorAll('.needs-validation')
+
+		// Loop over them and prevent submission
+		Array.prototype.slice.call(forms)
+			.forEach(function (form) {
+				form.addEventListener('submit', function (event) {
+					if (!form.checkValidity()) {
+						event.preventDefault()
+						event.stopPropagation()
+					}
+
+					form.classList.add('was-validated')
+				}, false)
+			})
+	})()
+	</script>
+
+
+
+
+	<div id="edit" class="tabcontent">
+
+		<div class="row tm-content-row">
+			<div class="col-sm-12 col-md-12 col-lg-8 col-xl-8 tm-block-col">
+				<div class="tm-bg-primary-dark tm-block tm-block-products">
+					<div class="tm-product-table-container">
+						<table class="table table-hover tm-table-small tm-product-table">
+							<thead>
+								<tr>
+									<th scope="col">&nbsp;</th>
+									<th scope="col">NOMBRE DEL PRODUCTO</th>
+									<th scope="col">NÚMERO DE UNIDADES</th>
+									<th scope="col">EN INVENTARIO</th>
+									<th scope="col">&nbsp;</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<th scope="row"><input type="checkbox"></th>
+									<td class="tm-product-name">Producto 1</td>
+									<td>1,450</td>
+									<td>550</td>
+									<td>
+										<a href="#" class="tm-product-delete-link">
+											<i class="far fa-trash-alt tm-product-delete-icon"></i>
+										</a>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row"><input type="checkbox"></th>
+									<td class="tm-product-name">Producto 2</td>
+									<td>1,250</td>
+									<td>750</td>
+									<td>
+										<a href="#" class="tm-product-delete-link">
+											<i class="far fa-trash-alt tm-product-delete-icon"></i>
+										</a>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row"><input type="checkbox"></th>
+									<td class="tm-product-name">Producto 3</td>
+									<td>1,100</td>
+									<td>900</td>
+									<td>
+										<a href="#" class="tm-product-delete-link">
+											<i class="far fa-trash-alt tm-product-delete-icon"></i>
+										</a>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row"><input type="checkbox"></th>
+									<td class="tm-product-name">Producto 4</td>
+									<td>1,400</td>
+									<td>600</td>
+									<td>
+										<a href="#" class="tm-product-delete-link">
+											<i class="far fa-trash-alt tm-product-delete-icon"></i>
+										</a>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row"><input type="checkbox"></th>
+									<td class="tm-product-name">Producto 5</td>
+									<td>1,800</td>
+									<td>200</td>
+									<td>
+										<a href="#" class="tm-product-delete-link">
+											<i class="far fa-trash-alt tm-product-delete-icon"></i>
+										</a>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row"><input type="checkbox"></th>
+									<td class="tm-product-name">Producto 6</td>
+									<td>1,000</td>
+									<td>1,000</td>
+									<td>
+										<a href="#" class="tm-product-delete-link">
+											<i class="far fa-trash-alt tm-product-delete-icon"></i>
+										</a>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row"><input type="checkbox"></th>
+									<td class="tm-product-name">Producto 7</td>
+									<td>500</td>
+									<td>100</td>
+									<td>
+										<a href="#" class="tm-product-delete-link">
+											<i class="far fa-trash-alt tm-product-delete-icon"></i>
+										</a>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row"><input type="checkbox"></th>
+									<td class="tm-product-name">Producto 8</td>
+									<td>1,000</td>
+									<td>600</td>
+									<td>
+										<a href="#" class="tm-product-delete-link">
+											<i class="far fa-trash-alt tm-product-delete-icon"></i>
+										</a>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row"><input type="checkbox"></th>
+									<td class="tm-product-name">Producto 9</td>
+									<td>1,200</td>
+									<td>800</td>
+									<td>
+										<a href="#" class="tm-product-delete-link">
+											<i class="far fa-trash-alt tm-product-delete-icon"></i>
+										</a>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row"><input type="checkbox"></th>
+									<td class="tm-product-name">Producto 10</td>
+									<td>1,600</td>
+									<td>400</td>
+									<td>
+										<a href="#" class="tm-product-delete-link">
+											<i class="far fa-trash-alt tm-product-delete-icon"></i>
+										</a>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row"><input type="checkbox"></th>
+									<td class="tm-product-name">Producto 11</td>
+									<td>2,000</td>
+									<td>400</td>
+									<td>
+										<a href="#" class="tm-product-delete-link">
+											<i class="far fa-trash-alt tm-product-delete-icon"></i>
+										</a>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<!-- table container -->
+					<button class="site-btn btn-block text-uppercase">
+						Borrar los productos seleccionados
+					</button>
+				</div>
+			</div>
+			<div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 tm-block-col">
+				<div class="tm-bg-primary-dark tm-block tm-block-product-categories">
+					<h2 class="tm-block-title">Categorías</h2>
+					<div class="tm-product-table-container">
+						<table class="table tm-table-small tm-product-table">
+							<tbody>
+								<tr>
+									<td class="tm-product-name">Categoría 1</td>
+									<td class="text-center">
+										<a href="#" class="tm-product-delete-link">
+											<i class="far fa-trash-alt tm-product-delete-icon"></i>
+										</a>
+									</td>
+								</tr>
+								<tr>
+									<td class="tm-product-name">Categoría 2</td>
+									<td class="text-center">
+										<a href="#" class="tm-product-delete-link">
+											<i class="far fa-trash-alt tm-product-delete-icon"></i>
+										</a>
+									</td>
+								</tr>
+								<tr>
+									<td class="tm-product-name">Categoría 3</td>
+									<td class="text-center">
+										<a href="#" class="tm-product-delete-link">
+											<i class="far fa-trash-alt tm-product-delete-icon"></i>
+										</a>
+									</td>
+								</tr>
+								<tr>
+									<td class="tm-product-name">Categoría 4</td>
+									<td class="text-center">
+										<a href="#" class="tm-product-delete-link">
+											<i class="far fa-trash-alt tm-product-delete-icon"></i>
+										</a>
+									</td>
+								</tr>
+								<tr>
+									<td class="tm-product-name">Categoría 5</td>
+									<td class="text-center">
+										<a href="#" class="tm-product-delete-link">
+											<i class="far fa-trash-alt tm-product-delete-icon"></i>
+										</a>
+									</td>
+								</tr>
+								<tr>
+									<td class="tm-product-name">Categoría 6</td>
+									<td class="text-center">
+										<a href="#" class="tm-product-delete-link">
+											<i class="far fa-trash-alt tm-product-delete-icon"></i>
+										</a>
+									</td>
+								</tr>
+								<tr>
+									<td class="tm-product-name">Categoría 7</td>
+									<td class="text-center">
+										<a href="#" class="tm-product-delete-link">
+											<i class="far fa-trash-alt tm-product-delete-icon"></i>
+										</a>
+									</td>
+								</tr>
+								<tr>
+									<td class="tm-product-name">Categoría 8</td>
+									<td class="text-center">
+										<a href="#" class="tm-product-delete-link">
+											<i class="far fa-trash-alt tm-product-delete-icon"></i>
+										</a>
+									</td>
+								</tr>
+								<tr>
+									<td class="tm-product-name">Categoría 9</td>
+									<td class="text-center">
+										<a href="#" class="tm-product-delete-link">
+											<i class="far fa-trash-alt tm-product-delete-icon"></i>
+										</a>
+									</td>
+								</tr>
+								<tr>
+									<td class="tm-product-name">Categoría 10</td>
+									<td class="text-center">
+										<a href="#" class="tm-product-delete-link">
+											<i class="far fa-trash-alt tm-product-delete-icon"></i>
+										</a>
+									</td>
+								</tr>
+								<tr>
+									<td class="tm-product-name">Categoría 11</td>
+									<td class="text-center">
+										<a href="#" class="tm-product-delete-link">
+											<i class="far fa-trash-alt tm-product-delete-icon"></i>
+										</a>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<!-- table container -->
+					<button class="site-btn btn-block text-uppercase mb-3">
+						Agregar nueva categoría
+					</button>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<div id="customers" class="tabcontent">
+		<div>
+			<h2 class="tm-block-title">Clientes</h2>
+			<table class="table">
+					<thead>
+							<tr>
+									<th scope="col">Código Cliente</th>
+									<th scope="col">Nombre</th>
+									<th scope="col">Dirección</th>
+									<th scope="col">E-mail</th>
+									<th scope="col">Teléfono</th>
+							</tr>
+					</thead>
+					<tbody>
+							<tr>
+									<th scope="row"><b>#EFEFEF</b></th>
+									<td><b>Oliver Trag</b></td>
+									<td><b>London, UK</b></td>
+									<td><b>oliver@gmail.com</b></td>
+									<td>3106596314</td>
+							</tr>
+							<tr>
+									<th scope="row"><b>#122348</b></th>
+									<td><b>Jacob Miller</b></td>
+									<td><b>London, UK</b></td>
+									<td><b>jacob@gmail.com</b></td>
+									<td>320659871</td>
+							</tr>
+							<tr>
+									<th scope="row"><b>#122347</b></th>
+
+									<td><b>George Wilson</b></td>
+									<td><b>London, UK</b></td>
+									<td><b>gorge@hotmail.com</b></td>
+									<td>32145664</td>
+							</tr>
+							<tr>
+									<th scope="row"><b>#122346</b></th>
+
+									<td><b>William Aung</b></td>
+									<td><b>London, UK</b></td>
+									<td><b>wilian@hotmail</b></td>
+									<td>36587151</td>
+
+							</tr>
+							<tr>
+									<th scope="row"><b>#122345</b></th>
+
+									<td><b>Harry Ryan</b></td>
+									<td><b>London, UK</b></td>
+									<td><b>harry@gmail.com</b></td>
+									<td>36545882</td>
+
+							</tr>
+							<tr>
+									<th scope="row"><b>#122344</b></th>
+
+									<td><b>Michael Jones</b></td>
+									<td><b>London, UK</b></td>
+									<td><b>Michael@gmail.com</b></td>
+									<td>332145524</td>
+
+							</tr>
+							<tr>
+									<th scope="row"><b>#122343</b></th>
+
+									<td><b>Timmy Davis</b></td>
+									<td><b>London, UK</b></td>
+									<td><b>timmy@gmail.com</b></td>
+									<td>321455245</td>
+
+							</tr>
+							<tr>
+									<th scope="row"><b>#122342</b></th>
+
+									<td><b>Oscar Phyo</b></td>
+									<td><b>London, UK</b></td>
+									<td><b>oscar@gmail.com</b></td>
+									<td>314566856</td>
+
+							</tr>
+							<tr>
+									<th scope="row"><b>#122341</b></th>
+
+									<td><b>Charlie Brown</b></td>
+									<td><b>London, UK</b></td>
+									<td><b>charlie@gmail.com</b></td>
+									<td>341255882</td>
+
+							</tr>
+							<tr>
+									<th scope="row"><b>#122340</b></th>
+
+									<td><b>Wilson Cookies</b></td>
+									<td><b>London, UK</b></td>
+									<td><b>hjk@gmail.com</b></td>
+									<td>31456688</td>
+
+							</tr>
+							<tr>
+									<th scope="row"><b>#122339</b></th>
+
+									<td><b>Richard Clamon</b></td>
+									<td><b>London, UK</b></td>
+									<td><b>richar@gmail.com</b></td>
+									<td>315326445</td>
+
+							</tr>
+					</tbody>
+			</table>
+	</div>
+
+	</div>
+
+	<div id="bill" class="tabcontent">
+		<center>
+			<div class="card">
+					<h2>Factura</h2>
+					<div>
+						<div class="card">
+							<h1>Ceralbi</h1>
+							<p>Desarrollo de software</p>
+							<p>Nit: 890000000-1</p>
+							<p>Bogotá D.C</p>
+						</div>
+						<div>
+							<img src="../Imgs\LogoAzulW.png" />
+						</div>
+					</div>
+
+					<hr />
+
+					<div>
+						<div>
+							<form action="" class="needs-validation" novalidate>
+							<div class="col-md-6">
+								<input type="text" class="form-control"id="validationCostum01" placeholder="N° Factura*:"required>
+								<div class="invalid-feedback">
+								Este campo es obligatorio..
+								</div>
+							</div><br>
+							<div class="col-md-6">
+								<input type="text" class="form-control"id="validationCostum01" placeholder="Fecha*:"required>
+								<div class="invalid-feedback">
+								Este campo es obligatorio..
+								</div>
+							</div><br>
+							<div class="col-md-6">
+								<input type="text" class="form-control"id="validationCostum01" placeholder="Fecha de vencimiento*:"required>
+								<div class="invalid-feedback">
+								Este campo es obligatorio..
+								</div>
+							</div><br>
+							<div class="col-md-6">
+								<input type="text" class="form-control"id="validationCostum01" placeholder="N° de pedido*:"required>
+								<div class="invalid-feedback">
+								Este campo es obligatorio..
+								</div>
+							</div><br>
+							<div class="col-md-6">
+								<input type="text" class="form-control"id="validationCostum01" placeholder="Cliente*:"required>
+								<div class="invalid-feedback">
+								Este campo es obligatorio..
+								</div>
+							</div><br>
+							<div class="col-md-6">
+								<input type="text" class="form-control"id="validationCostum01" placeholder="Nit/CC*:"required>
+								<div class="invalid-feedback">
+								Este campo es obligatorio..
+								</div>
+							</div><br>
+							<div class="col-md-6">
+								<input type="text" class="form-control"id="validationCostum01" placeholder="Teléfono*:"required>
+								<div class="invalid-feedback">
+								Este campo es obligatorio..
+								</div>
+							</div><br>
+							<div class="col-md-6">
+								<input type="text" class="form-control"id="validationCostum01" placeholder="Dirección*:"required>
+								<div class="invalid-feedback">
+								Este campo es obligatorio..
+								</div>
+							</div><br>
+							<div class="col-md-6">
+								<input type="text" class="form-control"id="validationCostum01" placeholder="Ciudad/Municipio *:"required>
+								<div class="invalid-feedback">
+								Este campo es obligatorio..
+								</div>
+							</div><br>
+							<div class="col-md-6">
+								<input type="text" class="form-control"id="validationCostum01" placeholder="Correo Electrónico*:"required>
+								<div class="invalid-feedback">
+								Este campo es obligatorio..
+								</div>
+							</div><br>
+							<div class="col-md-6">
+								<input type="text" class="form-control"id="validationCostum01" placeholder="Método de pago*:" required>
+								<div class="invalid-feedback">
+								Este campo es obligatorio..
+								</div>
+							</div><br>
+							<div class="checkbox-items">
+								<div class="ci-item">
+									<input type="checkbox" name="a" class="form-control"id="validationCostum01" required>
+									<label for="tandc">Términos y Condiciones</label>
+								</div>
+							</div>
+							<div  id="liveAlertPlaceholder"></div>
+							<div class="text-center">
+								<button class="site-btn" id="liveAlertBtn">Generar factura</button>
+							</div>
+</form>
+					<div>
+						<table>
+							<thead>
+								<tr>
+									<th>Codigo Artículo</th>
+									<th>Iva</th>
+									<th>Cantidad</th>
+									<th>Total</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>123</td>
+									<td>19</td>
+									<td>3</td>
+									<td>60000</td>
+								</tr>
+								<tr>
+									<td>132</td>
+									<td>19</td>
+									<td>1</td>
+									<td>20000</td>
+								</tr>
+							</tbody>
+							<tfoot>
+								<tr>
+									<th></th>
+									<th></th>
+									<th>subtotal Factura</th>
+									<th>64.800</th><br>
+								</tr>
+								<tr>
+									<th></th>
+									<th></th>
+									<th>Iva</th>
+									<th>15.200</th>
+								</tr>
+								<tr>
+									<th></th>
+									<th></th>
+									<th>Total Factura</th>
+									<th>80.000</th>
+								</tr>
+							</tfoot>
+						</table>
+					</div>
+
+			</div>
+		</center>
+	</div>
+
+
+	<div id="inventory" class="tabcontent">
+
+ </div><!---inv--->
+
+	<div id="sales" class="tabcontent">
+		<div>
+		<p>Est es la pagina de tendencias de ventas</p>
+		</div>
+	</div>
+
+	<div id="reports" class="tabcontent">
+		<!--reportes-->
+
+
+
+
+		<div id="page-inner">
+		<div>
+			<br><h2>Reportes</h2>
+
+
+		<div class="dashboard-cards">
+			<div class="container">
+
+  <div class="row g-2">
+    <div class="col-6">
+      <div class="p-3 border bg-light" ><strong>INGRESOS</strong>	<h3>15,666</h3><img src="../Imgs\Ganancias.png" alt="ventas"></div>
+    </div>
+    <div class="col-6">
+      <div class="p-3 border bg-light"><strong>VENTAS</strong><h3>36,540</h3><img src="../Imgs\Gafica ventas.png" alt="ventas"></div>
+    </div>
+		<div class="row g-2">
+	    <div class="col-6">
+	      <div class="p-3 border bg-light"><strong>	<h4>Ganancias</h4></strong>	<h3>84,198</h3></div>
+	    </div>
+			<div class="col-6">
+	      <div class="p-3 border bg-light"><strong><h4>Porcentaje de Visitas</h4></strong><h3>46%</h3></div>
+	    </div>
+    <div class="col-6">
+      <div class="p-3 border bg-light"><strong>PRODUCTOS</strong><h3>24,225</h3></div>
+    </div>
+    <div class="col-6">
+      <div class="p-3 border bg-light"><strong>VISITAS</strong><h3>24,225</h3></div>
+    </div>
+
+
+	    <div class="col-6">
+	      <div class="p-3 border bg-light"><strong>Clientes</strong><h3>84%</h3></div>
+	    </div>
+	    <div class="col-6">
+	      <div class="p-3 border bg-light"><strong>Ventas</strong><h3>55%</h3></div>
+	    </div>
+  </div>
+</div>
+
+
+
+	</div>
+		</div>
+	</div>
+</div>
+</div>
+
+
+
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+	<script type="text/jscript">
+	// Example starter JavaScript for disabling form submissions if there are invalid fields
+	(function () {
+		'use strict'
+
+		// Fetch all the forms we want to apply custom Bootstrap validation styles to
+		var forms = document.querySelectorAll('.needs-validation')
+
+		// Loop over them and prevent submission
+		Array.prototype.slice.call(forms)
+			.forEach(function (form) {
+				form.addEventListener('submit', function (event) {
+					if (!form.checkValidity()) {
+						event.preventDefault()
+						event.stopPropagation()
+					}
+
+					form.classList.add('was-validated')
+				}, false)
+			})
+	})()
+	</script>
+
+	<div id="contact" class="tabcontent">
+		<div class="row justify-content-center">
+			<div class="col-md-12">
+				<div class="wrapper">
+					<div class="row">
+						<div class="col-md-7">
+							<div class="contact-wrap p-md-5 p-4">
+								<h3 class="mb-4">Contácto-cliente</h3>
+								<div id="form-message-warning" class="mb-4"></div>
+								<div id="form-message-success" class="mb-4">
+									Tu mensaje ha sido enviado ¡Gracias!
+								</div>
+
+									<div class="row">
+										<form action="" class="needs-validation" novalidate>
+										<div class="col-md-12">
+											<div class="form-group">
+												<label for="validationCostum01" class="form-label">Nombre Completo</label>
+												<input type="text" class="form-control"id="validationCostum01" placeholder="Name" required>
+												<div class="invalid-feedback">
+												Este campo es obligatorio..
+												</div>
+											</div>
+										</div>
+										<div class="col-md-12">
+											<div class="form-group">
+												<label for="validationCostum01" class="form-label">Correo Electrónico</label>
+												<input type="email" class="form-control"id="validationCostum01" placeholder="Email" required>
+												<div class="invalid-feedback">
+												Este campo es obligatorio..
+												</div>
+											</div>
+										</div>
+										<div class="col-md-12">
+											<div class="form-group">
+												<label for="validationCostum01" class="form-label">Asunto</label>
+												<input type="text" class="form-control"id="validationCostum01" placeholder="Subject" required>
+												<div class="invalid-feedback">
+												Este campo es obligatorio..
+												</div>
+											</div>
+										</div>
+										<div class="col-md-12">
+											<div class="form-group">
+												<label for="validationCostum01" class="form-label">Mensaje</label>
+												<textarea name="message" class="form-control"id="validationCostum01" cols="30" rows="4" placeholder="Message" required></textarea>
+												<div class="invalid-feedback">
+												Este campo es obligatorio..
+												</div>
+											</div>
+										</div>
+										<div class="col-md-12">
+											<div class="form-group">
+												<div  id="liveAlertPlaceholder"></div>
+												<input type="submit" value="Enviar Mensaje" class="site-btn" id="liveAlertBtn">
+												<div class="submitting"></div>
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+							<!--Script Validación-->
+							<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+							<script type="text/jscript">
+							// Example starter JavaScript for disabling form submissions if there are invalid fields
+							(function () {
+								'use strict'
+
+								// Fetch all the forms we want to apply custom Bootstrap validation styles to
+								var forms = document.querySelectorAll('.needs-validation')
+
+								// Loop over them and prevent submission
+								Array.prototype.slice.call(forms)
+									.forEach(function (form) {
+										form.addEventListener('submit', function (event) {
+											if (!form.checkValidity()) {
+												event.preventDefault()
+												event.stopPropagation()
+											}
+
+											form.classList.add('was-validated')
+										}, false)
+									})
+							})()
+							</script>
+
+
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-5 d-flex align-items-stretch">
+							<div class="row mb-5">
+								<div class="col-md-3">
+									<div class="dbox w-100 text-center">
+										<div class="icon d-flex align-items-center justify-content-center">
+											<span class="fa fa-map-marker"></span>
+										</div>
+										<div class="text">
+											<p><span>Dirección:</span> Calle 100 #45-90, Bogotá D.C., Colombia</p>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-3">
+									<div class="dbox w-100 text-center">
+										<div class="icon d-flex align-items-center justify-content-center">
+											<span class="fa fa-phone"></span>
+										</div>
+										<div class="text">
+											<p><span>Teléfono:</span> <a href="tel://1234567920">+ 1235 2355 98</a></p>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-3">
+									<div class="dbox w-100 text-center">
+										<div class="icon d-flex align-items-center justify-content-center">
+											<span class="fa fa-paper-plane"></span>
+										</div>
+										<div class="text">
+											<p><span>E-mail:</span> <a href="mailto:info@ceralbi.com">info@ceralbi.com</a></p>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-3">
+									<div class="dbox w-100 text-center">
+										<div class="icon d-flex align-items-center justify-content-center">
+											<span class="fa fa-globe"></span>
+										</div>
+										<div class="text">
+											<p><span>Website</span> <a href="#">ceralbi.com</a></p>
+										</div>
+									</div>
+								</div>
+							</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+
+
+
+
+
+
+	<!--====== Javascripts & Jquery ======-->
+	<script src="../js/sidenav.js"></script>
+	<script src="../js/jquery-3.2.1.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<script src="../js/owl.carousel.min.js"></script>
+	<script src="../js/mixitup.min.js"></script>
+	<script src="../js/sly.min.js"></script>
+	<script src="../js/jquery.nicescroll.min.js"></script>
+	<script src="../js/main.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+	<script type="text/jscript">
+	// Example starter JavaScript for disabling form submissions if there are invalid fields
+	(function () {
+		'use strict'
+
+		// Fetch all the forms we want to apply custom Bootstrap validation styles to
+		var forms = document.querySelectorAll('.needs-validation')
+
+		// Loop over them and prevent submission
+		Array.prototype.slice.call(forms)
+			.forEach(function (form) {
+				form.addEventListener('submit', function (event) {
+					if (!form.checkValidity()) {
+						event.preventDefault()
+						event.stopPropagation()
+					}
+
+					form.classList.add('was-validated')
+				}, false)
+			})
+	})()
+	</script>
+	<!--Script de alerta-->
+						<script>
+						var alertPlaceholder = document.getElementById('liveAlertPlaceholder')
+						var alertTrigger = document.getElementById('liveAlertBtn')
+
+						function alert(message, type) {
+						var wrapper = document.createElement('div')
+						wrapper.innerHTML = '<div class="alert alert-' + type + ' alert-dismissible" role="alert">' + message + '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>'
+
+						alertPlaceholder.append(wrapper)
+						}
+
+						if (alertTrigger) {
+						alertTrigger.addEventListener('click', function () {
+							alert('Debes ingresar datos válidos', 'danger')
+						})
+						}
+						</script>
+
+    </body>
+</html>
